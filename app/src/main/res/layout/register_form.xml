@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#393e46"
+    android:padding="50dp">
+
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/baseline_app_registration_24"
+
+        app:layout_constraintEnd_toEndOf="@+id/editFirstName"
+        app:layout_constraintStart_toStartOf="@+id/editFirstName"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editFirstName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="120dp"
+        android:backgroundTint="#FFFFFF"
+        android:ems="10"
+        android:hint="First Name"
+        android:inputType="text"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#13aff5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editLastName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="#FFFFFF"
+        android:ems="10"
+        android:hint="Last Name"
+        android:inputType="text"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#13aff5"
+        app:layout_constraintEnd_toEndOf="@+id/editFirstName"
+        app:layout_constraintStart_toStartOf="@+id/editFirstName"
+        app:layout_constraintTop_toBottomOf="@+id/editFirstName" />
+
+    <EditText
+        android:id="@+id/editEmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="#FFFFFF"
+        android:ems="10"
+        android:hint="E-mail"
+        android:inputType="textEmailAddress"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#13aff5"
+        app:layout_constraintEnd_toEndOf="@+id/editLastName"
+        app:layout_constraintStart_toStartOf="@+id/editLastName"
+        app:layout_constraintTop_toBottomOf="@+id/editLastName" />
+
+    <EditText
+        android:id="@+id/editPassword"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="#FFFFFF"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#13aff5"
+        app:layout_constraintEnd_toEndOf="@+id/editEmail"
+        app:layout_constraintStart_toStartOf="@+id/editEmail"
+        app:layout_constraintTop_toBottomOf="@+id/editEmail" />
+
+    <EditText
+        android:id="@+id/editPhone"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="#FFFFFF"
+        android:ems="10"
+        android:hint="Phone"
+        android:inputType="number"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#13aff5"
+        app:layout_constraintEnd_toEndOf="@+id/editPassword"
+        app:layout_constraintStart_toStartOf="@+id/editPassword"
+        app:layout_constraintTop_toBottomOf="@+id/editPassword" />
+
+
+    <RadioGroup
+        android:id="@+id/rgRole"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:checkedButton="@id/rbStudent"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/regBtn"
+        app:layout_constraintEnd_toEndOf="@+id/editPhone"
+        app:layout_constraintStart_toStartOf="@+id/editPhone"
+        app:layout_constraintTop_toBottomOf="@+id/editPhone">
+
+        <RadioButton
+            android:id="@+id/rbProfessor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:buttonTint="@color/white"
+            android:text="Professor"
+            android:textColor="@color/blueTint"
+            android:textColorHighlight="@color/blueTint"
+            android:textColorHint="@color/blueTint"
+            android:textColorLink="@color/blueTint"
+            android:textSize="18dp"
+            app:layout_constraintBottom_toTopOf="@+id/regBtn"
+            app:layout_constraintEnd_toStartOf="@+id/radioButton2"
+            app:layout_constraintStart_toStartOf="@+id/editPhone"
+            app:layout_constraintTop_toBottomOf="@+id/editPhone" />
+
+        <RadioButton
+            android:id="@+id/rbStudent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:buttonTint="@color/white"
+            android:text="Student"
+            android:textColor="@color/blueTint"
+            android:textColorHighlight="@color/blueTint"
+            android:textColorHint="@color/blueTint"
+            android:textColorLink="@color/blueTint"
+            android:textSize="18dp"
+            app:layout_constraintBottom_toTopOf="@+id/regBtn"
+            app:layout_constraintEnd_toEndOf="@+id/editPhone"
+            app:layout_constraintTop_toBottomOf="@+id/editPhone" />
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/regBtn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="120dp"
+        android:background="#333"
+        android:text="REGISTER"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="@+id/editPhone"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/editPhone"
+        app:layout_constraintTop_toBottomOf="@+id/editPhone" />
+
+    <TextView
+        android:id="@+id/loginTxtView"
+        android:layout_width="172dp"
+        android:layout_height="57dp"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:text="Log In"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="@+id/regBtn"
+        app:layout_constraintStart_toStartOf="@+id/regBtn"
+        app:layout_constraintTop_toBottomOf="@+id/regBtn" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
