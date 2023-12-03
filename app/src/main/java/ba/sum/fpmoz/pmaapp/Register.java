@@ -109,20 +109,21 @@ public class Register extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
+                                    // User is successfully created in Firebase Authentication
+                                    String userId = mAuth.getCurrentUser().getUid();
+
+                                    // Now, store additional user data in the Realtime Database
                                     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("users");
-                                    String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
                                     User newUser = new User(FirstName, LastName, Email, Password, Phone, finalRole);
                                     databaseReference.child(userId).setValue(newUser);
 
                                     Intent intent = new Intent(getApplicationContext(), Login.class);
                                     startActivity(intent);
-                                    Toast.makeText(Register.this, "Account Created",
-                                            Toast.LENGTH_LONG).show();
+                                    Toast.makeText(Register.this, "Account Created", Toast.LENGTH_LONG).show();
                                     finish();
                                 } else {
-                                    Toast.makeText(Register.this, "Registration failed. " + task.getException().getMessage(),
-                                            Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Register.this, "Registration failed. " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });

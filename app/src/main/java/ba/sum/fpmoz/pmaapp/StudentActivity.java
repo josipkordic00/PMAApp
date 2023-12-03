@@ -17,7 +17,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class MainActivity extends AppCompatActivity {
+public class StudentActivity extends AppCompatActivity {
     FirebaseAuth auth;
     Button logout;
     TextView userDetails;
@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.student_view);
 
         auth = FirebaseAuth.getInstance();
         logout = findViewById(R.id.logout);

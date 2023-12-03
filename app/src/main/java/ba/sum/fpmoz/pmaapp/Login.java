@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.os.Bundle;
@@ -15,7 +16,11 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class Login extends AppCompatActivity {
 
@@ -33,6 +38,8 @@ public class Login extends AppCompatActivity {
         loginPassword = findViewById(R.id.loginPassword);
         loginBtn = findViewById(R.id.loginBtn);
         registerBtn = findViewById(R.id.registerBtn);
+
+        DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference("users");
 
 
 
@@ -68,10 +75,23 @@ public class Login extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
+
+                                    usersRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                            Log.d("MyTag", "Snapshot: " + dataSnapshot.toString());
+                                            if(dataSnapshot.exists()){
+                                                Log.d("MyTag", "exists");
+                                            }else{
+                                                Log.d("MyTag", "dont exists");
+                                            }
+                                        }
+                                        @Override
+                                        public void onCancelled(@NonNull DatabaseError databaseError) {
+                                            // Handle errors
+                                        }
+                                    });
                                     Toast.makeText(Login.this, "User is Logged", Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                                    startActivity(intent);
-                                    finish();
                                 } else {
                                     Toast.makeText(Login.this, "Authentication failed.",
                                             Toast.LENGTH_SHORT).show();
