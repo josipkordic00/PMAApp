@@ -11,6 +11,8 @@ public class Subject {
     public String studies;
     public String department;
 
+    public Subject() {}
+
     public Subject(String name, int classes, int exercises, int seminars, int semester, int practical, int ECTS, String studies, String department) {
         this.name = name;
         this.classes = classes;

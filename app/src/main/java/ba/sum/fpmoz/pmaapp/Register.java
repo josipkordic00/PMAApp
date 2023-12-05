@@ -17,6 +17,10 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -24,6 +28,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -35,6 +40,8 @@ public class Register extends AppCompatActivity {
     Button registerBtn;
     TextView loginTxtView;
     RadioGroup rgRole;
+
+    FirebaseDatabase mDatabase = FirebaseDatabase.getInstance("https://pmaapp-8b913-default-rtdb.europe-west1.firebasedatabase.app/");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +59,7 @@ public class Register extends AppCompatActivity {
         loginTxtView = findViewById(R.id.loginTxtView);
 
 
-
+        DatabaseReference usersDbRef = this.mDatabase.getReference("users");
 
 
 
@@ -77,6 +84,7 @@ public class Register extends AppCompatActivity {
                 String Phone;
                 int roleId;
                 String Role;
+                final int uuid;
 
                 FirstName = editFirstName.getText().toString();
                 LastName = editLastName.getText().toString();
@@ -104,35 +112,27 @@ public class Register extends AppCompatActivity {
                 }
 
                 String finalRole = Role;
+
+
                 mAuth.createUserWithEmailAndPassword(Email, Password)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
-                                    // User is successfully created in Firebase Authentication
-                                    String userId = mAuth.getCurrentUser().getUid();
-
-                                    // Now, store additional user data in the Realtime Database
-                                    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("users");
-
-                                    User newUser = new User(FirstName, LastName, Email, Password, Phone, finalRole);
-                                    databaseReference.child(userId).setValue(newUser);
-
+                                    String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                                    User u = new User(FirstName, LastName, Email, Password, Phone, finalRole );
+                                    usersDbRef.child(userId).setValue(u);
                                     Intent intent = new Intent(getApplicationContext(), Login.class);
                                     startActivity(intent);
                                     Toast.makeText(Register.this, "Account Created", Toast.LENGTH_LONG).show();
                                     finish();
                                 } else {
+                                    Log.e("Registerare", "Registration failed. " + task.getException().getMessage());
                                     Toast.makeText(Register.this, "Registration failed. " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });
             }
-
-
         });
-
-
-
     }
 }

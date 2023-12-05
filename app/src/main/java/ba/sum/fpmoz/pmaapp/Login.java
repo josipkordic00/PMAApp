@@ -28,6 +28,8 @@ public class Login extends AppCompatActivity {
     EditText loginEmail, loginPassword;
     Button loginBtn, registerBtn;
 
+    FirebaseDatabase mDatabase = FirebaseDatabase.getInstance("https://pmaapp-8b913-default-rtdb.europe-west1.firebasedatabase.app/");
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +41,7 @@ public class Login extends AppCompatActivity {
         loginBtn = findViewById(R.id.loginBtn);
         registerBtn = findViewById(R.id.registerBtn);
 
-        DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference("users");
+        DatabaseReference usersRef = this.mDatabase.getReference("users");
 
 
 
@@ -75,15 +77,22 @@ public class Login extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
-
                                     usersRef.addListenerForSingleValueEvent(new ValueEventListener() {
                                         @Override
                                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                            Log.d("MyTag", "Snapshot: " + dataSnapshot.toString());
+                                            String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                                            Log.d("MyTag", "84- " + dataSnapshot.child(uid).child("role").getValue());
                                             if(dataSnapshot.exists()){
-                                                Log.d("MyTag", "exists");
-                                            }else{
-                                                Log.d("MyTag", "dont exists");
+                                                if(dataSnapshot.child(uid).child("role").getValue().equals("Professor")){
+                                                    Intent intent = new Intent(getApplicationContext(), ProfessorActivity.class);
+                                                    startActivity(intent);
+                                                    finish();
+                                                } else if (dataSnapshot.child(uid).child("role").getValue().equals("Student")) {
+                                                    Intent intent2 = new Intent(getApplicationContext(), StudentActivity.class);
+                                                    startActivity(intent2);
+                                                    finish();
+                                                }
+
                                             }
                                         }
                                         @Override

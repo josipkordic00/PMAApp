@@ -10,7 +10,7 @@ public class Evidention {
     public Institution institution;
     public Subject subject;
     public String academicYear;
-
+    public Evidention() {}
 
     public Evidention(Date dateTime, User professor, List<User> studentList, Institution institution, Subject subject, String academicYear) {
         this.dateTime = dateTime;

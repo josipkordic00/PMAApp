@@ -6,14 +6,13 @@ public class Institution {
 
     public String university;
 
-    public Institution(String name, String address) {
+    public Institution() {}
+    public Institution(String name, String address, String university) {
         this.name = name;
         this.address = address;
-    }
-
-    public Institution(String university) {
         this.university = university;
     }
+
 
     public String getUniversity() {
         return university;

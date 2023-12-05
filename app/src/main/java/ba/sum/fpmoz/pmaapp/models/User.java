@@ -9,6 +9,7 @@ public class User {
     public String phone;
     public String role;
 
+    public User() {}
     public User(String firstName, String lastName, String email, String password, String phone, String role) {
         this.firstName = firstName;
         this.lastName = lastName;
