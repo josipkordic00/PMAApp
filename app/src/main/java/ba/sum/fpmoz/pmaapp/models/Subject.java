@@ -1,26 +1,30 @@
 package ba.sum.fpmoz.pmaapp.models;
 
+
 public class Subject {
     public String name;
-    public int classes;
-    public int exercises;
-    public int seminars;
-    public int semester;
-    public int practical;
-    public int ECTS;
+    public String classes;
+    public String exercises;
+    public String seminars;
+    public String semester;
+    public String practical;
+    public String ects;
+    public String userId;
     public String studies;
     public String department;
 
-    public Subject() {}
+    public Subject() {
+    }
 
-    public Subject(String name, int classes, int exercises, int seminars, int semester, int practical, int ECTS, String studies, String department) {
+    public Subject(String name, String classes, String exercises, String seminars, String semester, String practical, String ects, String userId, String studies, String department) {
         this.name = name;
         this.classes = classes;
         this.exercises = exercises;
         this.seminars = seminars;
         this.semester = semester;
         this.practical = practical;
-        this.ECTS = ECTS;
+        this.ects = ects;
+        this.userId = userId;
         this.studies = studies;
         this.department = department;
     }
@@ -33,52 +37,60 @@ public class Subject {
         this.name = name;
     }
 
-    public int getClasses() {
+    public String getClasses() {
         return classes;
     }
 
-    public void setClasses(int classes) {
+    public void setClasses(String classes) {
         this.classes = classes;
     }
 
-    public int getExercises() {
+    public String getExercises() {
         return exercises;
     }
 
-    public void setExercises(int exercises) {
+    public void setExercises(String exercises) {
         this.exercises = exercises;
     }
 
-    public int getSeminars() {
+    public String getSeminars() {
         return seminars;
     }
 
-    public void setSeminars(int seminars) {
+    public void setSeminars(String seminars) {
         this.seminars = seminars;
     }
 
-    public int getSemester() {
+    public String getSemester() {
         return semester;
     }
 
-    public void setSemester(int semester) {
+    public void setSemester(String semester) {
         this.semester = semester;
     }
 
-    public int getPractical() {
+    public String getPractical() {
         return practical;
     }
 
-    public void setPractical(int practical) {
+    public void setPractical(String practical) {
         this.practical = practical;
     }
 
-    public int getECTS() {
-        return ECTS;
+    public String getEcts() {
+        return ects;
     }
 
-    public void setECTS(int ECTS) {
-        this.ECTS = ECTS;
+    public void setects(String ects) {
+        this.ects = ects;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public String getStudies() {
@@ -97,3 +109,5 @@ public class Subject {
         this.department = department;
     }
 }
+
+

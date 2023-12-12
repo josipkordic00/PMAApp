@@ -4,23 +4,17 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -28,9 +22,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
-import java.util.ArrayList;
 
 import ba.sum.fpmoz.pmaapp.models.User;
 
@@ -55,7 +46,7 @@ public class Register extends AppCompatActivity {
         editPassword = findViewById(R.id.editPassword);
         editPhone = findViewById(R.id.editPhone);
         rgRole = findViewById(R.id.rgRole);
-        registerBtn = findViewById(R.id.regBtn);
+        registerBtn = findViewById(R.id.addSubjectBtn);
         loginTxtView = findViewById(R.id.loginTxtView);
 
 
@@ -83,8 +74,6 @@ public class Register extends AppCompatActivity {
                 String Password;
                 String Phone;
                 int roleId;
-                String Role;
-                final int uuid;
 
                 FirstName = editFirstName.getText().toString();
                 LastName = editLastName.getText().toString();
@@ -92,12 +81,9 @@ public class Register extends AppCompatActivity {
                 Password = editPassword.getText().toString();
                 Phone = editPhone.getText().toString();
                 roleId = rgRole.getCheckedRadioButtonId();
-                Role = "";
-                if(roleId == 2131231099){
-                    Role = "Professor";
-                } else if (roleId == 2131231100) {
-                    Role = "Student";
-                }
+                RadioButton checkedRadioButton = findViewById(roleId);
+                String checkedText = checkedRadioButton.getText().toString();
+                Log.d("taga 88-",checkedText);
 
 
 
@@ -111,7 +97,7 @@ public class Register extends AppCompatActivity {
                     return;
                 }
 
-                String finalRole = Role;
+                String finalRole = checkedText;
 
 
                 mAuth.createUserWithEmailAndPassword(Email, Password)
