@@ -3,6 +3,7 @@ package ba.sum.fpmoz.pmaapp.models;
 
 public class Subject {
     public String name;
+
     public String classes;
     public String exercises;
     public String seminars;

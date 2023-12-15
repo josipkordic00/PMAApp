@@ -122,7 +122,7 @@ public class AddSubjectActivity extends AppCompatActivity {
 
                 Subject s = new Subject(SubjectName, Classes, Exercises, Seminars, Semester, Practical, Ects, userId, Studies, Department);
                 Log.d("AddSubjectActivitysa", "Before setting value in database");
-                subjectsDbRef.child(SubjectName).setValue(s);
+                subjectsDbRef.child(user.getUid()).child(SubjectName).setValue(s);
                 Log.d("AddSubjectActivitysa", "After setting value in database");
 
                 Toast.makeText(AddSubjectActivity.this, "Subject added", Toast.LENGTH_SHORT).show();

@@ -82,12 +82,13 @@ public class ProfessorActivity extends AppCompatActivity implements SubjectAdapt
         subjectsDbRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot dataSnapshot: snapshot.getChildren()){
-                    Subject subject =dataSnapshot.getValue(Subject.class);
-                    if (subject.getUserId().toString().equals(user.getUid().toString())) {
-                        list.add(subject);
+                for (DataSnapshot parentSnapshot : snapshot.getChildren()) {
+                    for (DataSnapshot childSnapshot : parentSnapshot.getChildren()) {
+                        Subject subject = childSnapshot.getValue(Subject.class);
+                        if (subject != null && subject.getUserId().toString().equals(user.getUid().toString())) {
+                            list.add(subject);
+                        }
                     }
-
                 }
                 adapter.notifyDataSetChanged();
             }
@@ -124,16 +125,12 @@ public class ProfessorActivity extends AppCompatActivity implements SubjectAdapt
     }
     @Override
     public void onItemClick(Subject subject) {
-        DatabaseReference subjectsDbRef = this.mDatabase.getReference("subjects");
-        DatabaseReference usersDbRef = this.mDatabase.getReference("users");
+        DatabaseReference selectedSubjectDbRef = this.mDatabase.getReference("selected_subject");
+        selectedSubjectDbRef.child(user.getUid()).setValue(subject);
 
-
-
-
-
-        //Intent intent = new Intent(getApplicationContext(), SelectedSubjectActivity.class);
-        //startActivity(intent);
-        //finish();
+        Intent intent = new Intent(getApplicationContext(), SelectedSubjectActivity.class);
+        startActivity(intent);
+        finish();
         Log.d("ItemClicked", "Subject: " + subject);
     }
 }
