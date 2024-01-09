@@ -4,29 +4,66 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".StudentActivity"
+    android:background="#393e46"
+    tools:context=".Login"
     android:padding="20dp">
 
 
-    <TextView
-        android:id="@+id/user_details"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="student"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.328" />
+    <ImageView
+        android:id="@+id/emailIcon2"
+        android:padding="3dp"
+        android:layout_width="51dp"
+        android:layout_height="52dp"
+        android:src="@drawable/ic_action_name"
+        app:layout_constraintBottom_toBottomOf="@+id/emailProff"
+        app:layout_constraintTop_toTopOf="@+id/emailProff"
+        tools:layout_editor_absoluteX="-1dp"
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/logout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:background="#333"
         android:text="Log out"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/user_details"
-        app:layout_constraintStart_toStartOf="@+id/user_details"
-        app:layout_constraintTop_toBottomOf="@+id/user_details" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/emailProff"
+        android:layout_width="190dp"
+        android:layout_height="39dp"
+        android:layout_marginLeft="10dp"
+        android:backgroundTint="#FFFFFF"
+        android:gravity="center_vertical"
+        android:inputType="textEmailAddress"
+        android:text="TextView"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#808080"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/logout"
+        app:layout_constraintEnd_toStartOf="@+id/logout"
+        app:layout_constraintHorizontal_bias="0.076"
+        app:layout_constraintStart_toEndOf="@+id/emailIcon2"
+        app:layout_constraintTop_toTopOf="@+id/logout" />
+
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="409dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="20dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logout"
+        tools:ignore="MissingConstraints"  />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

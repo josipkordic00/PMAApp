@@ -17,7 +17,8 @@
         app:layout_constraintBottom_toBottomOf="@+id/emailProff"
         app:layout_constraintTop_toTopOf="@+id/emailProff"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="-1dp" />
+        tools:layout_editor_absoluteX="-1dp"
+        android:scaleType="fitCenter"/>
 
     <Button
         android:id="@+id/logout2"

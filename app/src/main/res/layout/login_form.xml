@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#393e46"
+    android:background="#161616"
     tools:context=".Login"
     android:padding="20dp">
 
@@ -73,7 +73,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="90dp"
-        android:background="#333"
+        android:background="@drawable/rounded_button"
         android:text="LOG IN"
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="@+id/loginPassword"
@@ -85,7 +85,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:background="#333"
+        android:background="@drawable/rounded_button"
         android:text="REGISTER"
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="@+id/loginBtn"

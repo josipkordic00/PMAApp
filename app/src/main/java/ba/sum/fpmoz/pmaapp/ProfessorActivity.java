@@ -58,6 +58,7 @@ public class ProfessorActivity extends AppCompatActivity implements SubjectAdapt
             startActivity(intent);
             finish();
         }
+
         // Fetch additional user data from the database
         usersDbRef.child(user.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
