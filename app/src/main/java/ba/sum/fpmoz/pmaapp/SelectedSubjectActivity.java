@@ -37,16 +37,6 @@ public class SelectedSubjectActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_selected_subject);
 
-        emailProff = findViewById(R.id.emailProff);
-        subjectName = findViewById(R.id.subjectName);
-        subjectClassesValue = findViewById(R.id.subjectClassesValue);
-        subjectDepartmentValue = findViewById(R.id.subjectDepartmentValue);
-        subjectEtcsValue = findViewById(R.id.subjectEtcsValue);
-        subjectExercisesValue = findViewById(R.id.subjectExercisesValue);
-        subjectSeminarsValue = findViewById(R.id.subjectSeminarsValue);
-        subjectPracticalValue = findViewById(R.id.subjectPracticalValue);
-        subjectStudiesValue = findViewById(R.id.subjectStudiesValue);
-        backBtn = findViewById(R.id.logout2);
         DatabaseReference usersDbRef = this.mDatabase.getReference("users");
         DatabaseReference selectedSDbRef = this.mDatabase.getReference("selected_subject");
 
@@ -80,14 +70,6 @@ public class SelectedSubjectActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Subject item = snapshot.child(user.getUid()).getValue(Subject.class);
-                subjectName.setText(item.getName().toString());
-                subjectClassesValue.setText(item.getClasses().toString());
-                subjectEtcsValue.setText(item.getEcts().toString());
-                subjectExercisesValue.setText(item.getExercises().toString());
-                subjectPracticalValue.setText(item.getPractical().toString());
-                subjectDepartmentValue.setText(item.getDepartment().toString());
-                subjectSeminarsValue.setText(item.getSeminars().toString());
-                subjectStudiesValue.setText(item.getStudies().toString());
             }
 
             @Override

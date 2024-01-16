@@ -4,64 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#393e46"
-    android:padding="20dp">
+    android:background="#161616"
+    android:paddingTop="10dp">
 
 
     <ImageView
         android:id="@+id/emailIcon2"
         android:layout_width="51dp"
         android:layout_height="52dp"
+        android:layout_marginRight="10dp"
         android:padding="3dp"
         android:src="@drawable/ic_action_name"
-        app:layout_constraintBottom_toBottomOf="@+id/emailProff"
-        app:layout_constraintTop_toTopOf="@+id/emailProff"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="-1dp" />
-
-    <Button
-        android:id="@+id/logout2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
-        android:background="#333"
-        android:text="BACK"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/emailProff"
-        android:layout_width="190dp"
-        android:layout_height="39dp"
-        android:layout_marginLeft="10dp"
-        android:backgroundTint="#FFFFFF"
-        android:gravity="center_vertical"
-        android:inputType="textEmailAddress"
-        android:text="TextView"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#808080"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/logout2"
-        app:layout_constraintEnd_toStartOf="@+id/logout2"
-        app:layout_constraintHorizontal_bias="0.076"
-        app:layout_constraintStart_toEndOf="@+id/emailIcon2"
-        app:layout_constraintTop_toTopOf="@+id/logout2" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="7dp" />
 
     <View
         android:id="@+id/divider"
         android:layout_width="409dp"
         android:layout_height="1dp"
-        android:layout_marginTop="20dp"
         android:background="?android:attr/listDivider"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logout2"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="88dp" />
+
 
     <ImageView
         android:id="@+id/emailIcon22"
@@ -71,253 +38,71 @@
         android:src="@drawable/ic_action_name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.515"
+        app:layout_constraintHorizontal_bias="0.54"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/divider"
-        app:layout_constraintVertical_bias="0.195"
+        app:layout_constraintVertical_bias="0.094"
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/subjectName"
-        android:layout_width="190dp"
-        android:layout_height="39dp"
-        android:backgroundTint="#FFFFFF"
+        android:id="@+id/textView"
+        android:layout_width="122dp"
+        android:layout_height="66dp"
         android:gravity="center"
-        android:inputType="text"
         android:text="TextView"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#808080"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/emailIcon22"
-        app:layout_constraintEnd_toEndOf="parent"
+
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/emailIcon2"
+        app:layout_constraintEnd_toStartOf="@+id/emailIcon2"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toEndOf="@+id/imageView6"
+        app:layout_constraintTop_toTopOf="@+id/emailIcon2"
+        app:layout_constraintVertical_bias="0.357" />
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@color/white"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="31dp"
+        tools:layout_editor_absoluteY="17dp" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="67dp"
+        android:layout_height="65dp"
+        android:layout_marginLeft="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider" />
+        app:layout_constraintTop_toTopOf="@+id/textView"
+        app:srcCompat="@drawable/baseline_arrow_circle_left_24" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/usersView"
+        android:layout_width="320dp"
+        android:layout_height="260dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/emailIcon22"
+        app:layout_constraintHorizontal_bias="0.55"
+        app:layout_constraintStart_toStartOf="@+id/emailIcon22"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.901" />
 
-    <TextView
-        android:id="@+id/subjectEtcs"
-        android:layout_width="150dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="#FFFFFF"
-        android:gravity="center_vertical"
-        android:inputType="text"
-        android:text="Ects :"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#808080"
-        android:textSize="20dp"
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#2B2A2A"
+        android:paddingLeft="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailIcon22" />
+        app:layout_constraintTop_toBottomOf="@+id/usersView"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/ic_action_name_button_list" />
 
-    <TextView
-        android:id="@+id/subjectEtcsValue"
-        android:layout_width="190dp"
-        android:layout_height="39dp"
-        android:backgroundTint="#FFFFFF"
-        android:gravity="center_vertical"
-        android:inputType="text"
-        android:text="TextView"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#808080"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/subjectEtcs"
-        app:layout_constraintStart_toEndOf="@+id/subjectEtcs"
-        app:layout_constraintTop_toTopOf="@+id/subjectEtcs" />
-
-    <TextView
-        android:id="@+id/subjectClasses"
-        android:layout_width="150dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="8dp"
-        android:backgroundTint="#FFFFFF"
-        android:gravity="center_vertical"
-        android:inputType="text"
-        android:text="Classes :"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#808080"
-        android:textSize="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/subjectEtcs"
-        app:layout_constraintTop_toBottomOf="@+id/subjectEtcs" />
-
-    <TextView
-        android:id="@+id/subjectClassesValue"
-        android:layout_width="190dp"
-        android:layout_height="39dp"
-        android:backgroundTint="#FFFFFF"
-        android:gravity="center_vertical"
-        android:inputType="text"
-        android:text="TextView"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#808080"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/subjectClasses"
-        app:layout_constraintStart_toEndOf="@+id/subjectClasses"
-        app:layout_constraintTop_toTopOf="@+id/subjectClasses" />
-
-    <TextView
-        android:id="@+id/subjectExercises"
-        android:layout_width="150dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="8dp"
-        android:backgroundTint="#FFFFFF"
-        android:gravity="center_vertical"
-        android:inputType="text"
-        android:text="Exercises :"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#808080"
-        android:textSize="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/subjectClasses"
-        app:layout_constraintTop_toBottomOf="@+id/subjectClasses" />
-
-    <TextView
-        android:id="@+id/subjectExercisesValue"
-        android:layout_width="190dp"
-        android:layout_height="39dp"
-        android:backgroundTint="#FFFFFF"
-        android:gravity="center_vertical"
-        android:inputType="text"
-        android:text="TextView"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#808080"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/subjectExercises"
-        app:layout_constraintStart_toEndOf="@+id/subjectExercises"
-        app:layout_constraintTop_toTopOf="@+id/subjectExercises" />
-
-    <TextView
-        android:id="@+id/subjectSeminars"
-        android:layout_width="150dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="8dp"
-        android:backgroundTint="#FFFFFF"
-        android:gravity="center_vertical"
-        android:inputType="text"
-        android:text="Seminars :"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#808080"
-        android:textSize="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/subjectExercises"
-        app:layout_constraintTop_toBottomOf="@+id/subjectExercises" />
-
-    <TextView
-        android:id="@+id/subjectSeminarsValue"
-        android:layout_width="190dp"
-        android:layout_height="39dp"
-        android:backgroundTint="#FFFFFF"
-        android:gravity="center_vertical"
-        android:inputType="text"
-        android:text="TextView"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#808080"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/subjectSeminars"
-        app:layout_constraintStart_toEndOf="@+id/subjectSeminars"
-        app:layout_constraintTop_toTopOf="@+id/subjectSeminars" />
-
-    <TextView
-        android:id="@+id/subjectPractical"
-        android:layout_width="150dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="8dp"
-        android:backgroundTint="#FFFFFF"
-        android:gravity="center_vertical"
-        android:inputType="text"
-        android:text="Practical :"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#808080"
-        android:textSize="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/subjectSeminars"
-        app:layout_constraintTop_toBottomOf="@+id/subjectSeminars" />
-
-    <TextView
-        android:id="@+id/subjectPracticalValue"
-        android:layout_width="190dp"
-        android:layout_height="39dp"
-        android:backgroundTint="#FFFFFF"
-        android:gravity="center_vertical"
-        android:inputType="text"
-        android:text="TextView"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#808080"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/subjectPractical"
-        app:layout_constraintStart_toEndOf="@+id/subjectPractical"
-        app:layout_constraintTop_toTopOf="@+id/subjectPractical" />
-
-    <TextView
-        android:id="@+id/subjectDepartment"
-        android:layout_width="150dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="8dp"
-        android:backgroundTint="#FFFFFF"
-        android:gravity="center_vertical"
-        android:inputType="text"
-        android:text="Department :"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#808080"
-        android:textSize="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/subjectPractical"
-        app:layout_constraintTop_toBottomOf="@+id/subjectPractical" />
-
-    <TextView
-        android:id="@+id/subjectDepartmentValue"
-        android:layout_width="190dp"
-        android:layout_height="39dp"
-        android:backgroundTint="#FFFFFF"
-        android:gravity="center_vertical"
-        android:inputType="text"
-        android:text="TextView"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#808080"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/subjectDepartment"
-        app:layout_constraintStart_toEndOf="@+id/subjectDepartment"
-        app:layout_constraintTop_toTopOf="@+id/subjectDepartment" />
-
-    <TextView
-        android:id="@+id/subjectStudies"
-        android:layout_width="150dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="8dp"
-        android:backgroundTint="#FFFFFF"
-        android:gravity="center_vertical"
-        android:inputType="text"
-        android:text="Studies :"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#808080"
-        android:textSize="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/subjectDepartment"
-        app:layout_constraintTop_toBottomOf="@+id/subjectDepartment" />
-
-    <TextView
-        android:id="@+id/subjectStudiesValue"
-        android:layout_width="190dp"
-        android:layout_height="39dp"
-        android:backgroundTint="#FFFFFF"
-        android:gravity="center_vertical"
-        android:inputType="text"
-        android:text="TextView"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#808080"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/subjectStudies"
-        app:layout_constraintStart_toEndOf="@+id/subjectStudies"
-        app:layout_constraintTop_toTopOf="@+id/subjectStudies" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
