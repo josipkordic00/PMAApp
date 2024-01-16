@@ -15,6 +15,9 @@
         android:theme="@style/Theme.PMAApp"
         tools:targetApi="31">
         <activity
+            android:name=".Evidence_Activity"
+            android:exported="false" />
+        <activity
             android:name=".SelectedSubjectActivity"
             android:exported="false" />
         <activity
