@@ -76,7 +76,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/textView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textView"
-        app:srcCompat="@drawable/baseline_arrow_circle_left_24" />
+        app:srcCompat="@drawable/ic_action_name_arrow" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/usersView"
