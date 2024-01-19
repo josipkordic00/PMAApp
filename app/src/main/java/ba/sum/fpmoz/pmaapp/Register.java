@@ -93,7 +93,7 @@ public class Register extends AppCompatActivity {
                     return;
                 }
                 if (Password.length() < 6) {
-                    Toast.makeText(Register.this, "Password must contain at least 6 characters", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Register.this, "Password must contain at least 6 characters!", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
