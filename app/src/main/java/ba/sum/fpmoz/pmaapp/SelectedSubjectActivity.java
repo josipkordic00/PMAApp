@@ -4,12 +4,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -19,17 +17,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.zxing.BarcodeFormat;
-import com.google.zxing.MultiFormatWriter;
-import com.google.zxing.WriterException;
-import com.google.zxing.common.BitMatrix;
-import com.journeyapps.barcodescanner.BarcodeEncoder;
 
 
 import ba.sum.fpmoz.pmaapp.models.Subject;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
 
 public class SelectedSubjectActivity extends AppCompatActivity {
 
@@ -37,8 +27,6 @@ public class SelectedSubjectActivity extends AppCompatActivity {
     subjectSeminarsValue,subjectDepartmentValue,subjectStudiesValue;
     Button backBtn;
     FirebaseAuth auth;
-
-    ImageView emailIcon22;
 
     FirebaseUser user;
     FirebaseDatabase mDatabase = FirebaseDatabase.getInstance("https://pmaapp-8b913-default-rtdb.europe-west1.firebasedatabase.app/");
@@ -49,17 +37,6 @@ public class SelectedSubjectActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_selected_subject);
 
-        emailProff = findViewById(R.id.emailProff);
-        subjectName = findViewById(R.id.subjectName);
-        subjectClassesValue = findViewById(R.id.subjectClassesValue);
-        subjectDepartmentValue = findViewById(R.id.subjectDepartmentValue);
-        subjectEtcsValue = findViewById(R.id.subjectEtcsValue);
-        subjectExercisesValue = findViewById(R.id.subjectExercisesValue);
-        subjectSeminarsValue = findViewById(R.id.subjectSeminarsValue);
-        subjectPracticalValue = findViewById(R.id.subjectPracticalValue);
-        subjectStudiesValue = findViewById(R.id.subjectStudiesValue);
-        backBtn = findViewById(R.id.logout2);
-        emailIcon22 = findViewById(R.id.emailIcon22);
         DatabaseReference usersDbRef = this.mDatabase.getReference("users");
         DatabaseReference selectedSDbRef = this.mDatabase.getReference("selected_subject");
 
@@ -71,8 +48,6 @@ public class SelectedSubjectActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         }
-
-
         // Fetch additional user data from the database
         usersDbRef.child(user.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -95,30 +70,6 @@ public class SelectedSubjectActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Subject item = snapshot.child(user.getUid()).getValue(Subject.class);
-                MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
-                Log.d("a22",formatCurrentDateTime() + " " + item.getName().toString());
-
-                try {
-                    String replacedString = item.getName().toString().replaceAll("\\s", "_");
-                    BitMatrix bitMatrix = multiFormatWriter.encode(formatCurrentDateTime() + " " + replacedString + " "+ item.getUserId().toString(), BarcodeFormat.QR_CODE,500,500);
-
-                    BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
-                    Bitmap bitmap = barcodeEncoder.createBitmap(bitMatrix);
-
-                    emailIcon22.setImageBitmap(bitmap);
-
-                }catch (WriterException e){
-                    throw  new RuntimeException(e);
-                }
-
-                subjectName.setText(item.getName().toString());
-                subjectClassesValue.setText(item.getClasses().toString());
-                subjectEtcsValue.setText(item.getEcts().toString());
-                subjectExercisesValue.setText(item.getExercises().toString());
-                subjectPracticalValue.setText(item.getPractical().toString());
-                subjectDepartmentValue.setText(item.getDepartment().toString());
-                subjectSeminarsValue.setText(item.getSeminars().toString());
-                subjectStudiesValue.setText(item.getStudies().toString());
             }
 
             @Override
@@ -138,12 +89,5 @@ public class SelectedSubjectActivity extends AppCompatActivity {
         });
 
 
-    }
-    public static String formatCurrentDateTime() {
-        Date currentDate = new Date();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("HH-dd-MM-yyyy", Locale.getDefault());
-        String formattedDateTime = dateFormat.format(currentDate);
-
-        return formattedDateTime;
     }
 }
