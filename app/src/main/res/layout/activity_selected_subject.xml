@@ -45,7 +45,7 @@
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/subjectName"
         android:layout_width="122dp"
         android:layout_height="66dp"
         android:gravity="center"
@@ -73,9 +73,9 @@
         android:layout_width="67dp"
         android:layout_height="65dp"
         android:layout_marginLeft="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView"
+        app:layout_constraintBottom_toBottomOf="@+id/subjectName"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView"
+        app:layout_constraintTop_toTopOf="@+id/subjectName"
         app:srcCompat="@drawable/ic_action_name_arrow" />
 
     <androidx.recyclerview.widget.RecyclerView

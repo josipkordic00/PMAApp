@@ -13,7 +13,7 @@
         android:padding="3dp"
         android:layout_width="51dp"
         android:layout_height="52dp"
-        android:src="@drawable/ic_action_calendar"
+        android:src="@drawable/ic_action_name"
         app:layout_constraintBottom_toBottomOf="@+id/emailProff"
         app:layout_constraintTop_toTopOf="@+id/emailProff"
         tools:layout_editor_absoluteX="-1dp"

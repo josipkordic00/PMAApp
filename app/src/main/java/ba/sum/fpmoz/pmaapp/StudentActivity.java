@@ -115,7 +115,7 @@ public class StudentActivity extends AppCompatActivity {
             builder.setTitle("SCANNED");
             builder.setMessage("Kolegij skeniran. Dodano u evidenciju");
             getQRcodeSubjectContents(result.getContents().toString());
-            evdDbRef.child(this.subjectUserId).child(this.subjectName).child(user.getUid().toString()).setValue(user.getEmail());
+            evdDbRef.child(this.subjectUserId).child(this.subjectName).setValue(user.getEmail());
 
             builder.setPositiveButton("ok", new DialogInterface.OnClickListener() {
                 @Override
