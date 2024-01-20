@@ -21,10 +21,10 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> 
     }
 
     private final Context context;
-    private final ArrayList<User> list; // Corrected field name
+    private final ArrayList<String> list; // Corrected field name
     private final OnItemClickListener listener;
 
-    public UserAdapter(Context context, ArrayList<User> list, OnItemClickListener listener) {
+    public UserAdapter(Context context, ArrayList<String> list, OnItemClickListener listener) {
         this.context = context;
         this.list = list; // Corrected field name
         this.listener = listener;
@@ -39,8 +39,8 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        User user = list.get(position);
-        holder.user.setText(user.getEmail());
+        String user = list.get(position);
+        holder.user.setText(user);
     }
 
     @Override

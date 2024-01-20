@@ -43,14 +43,13 @@ public class SelectedSubjectActivity extends AppCompatActivity implements UserAd
     TextView subjectName;
     FirebaseAuth auth;
     RecyclerView usersView;
-    ArrayList<User> list;
+    ArrayList<String> list;
     UserAdapter adapter;
 
     ImageView emailIcon22, backBtn;
 
     FirebaseUser user;
     FirebaseDatabase mDatabase = FirebaseDatabase.getInstance("https://pmaapp-8b913-default-rtdb.europe-west1.firebasedatabase.app/");
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,12 +79,26 @@ public class SelectedSubjectActivity extends AppCompatActivity implements UserAd
         usersView.setAdapter(adapter);
         evidentionDbRef.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot parentSnapshot : snapshot.getChildren()) {
-                    for (DataSnapshot childSnapshot : parentSnapshot.getChildren()) {
-                        Log.d("wa","sa");
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    // Check if the dataSnapshot exists and has children
+                    if (dataSnapshot.exists() && dataSnapshot.hasChildren()) {
+                        // Loop through the children of "evidentions"
+                        for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
+                            // Loop through all subjects for each user
+                            for (DataSnapshot subjectSnapshot : userSnapshot.getChildren()) {
+                                // Check if the subject node has emails
+                                if (subjectSnapshot.hasChildren()) {
+                                    // Get the emails under the current subject
+                                    for (DataSnapshot emailSnapshot : subjectSnapshot.getChildren()) {
+                                        String email = emailSnapshot.getValue(String.class);
+                                        list.add(email);
+                                        // Do something with the email, like add it to a list or display it in your UI
+                                    }
+                                }
+                            }
+                        }
                     }
-                }
+
                 adapter.notifyDataSetChanged();
             }
 
@@ -165,4 +178,18 @@ public class SelectedSubjectActivity extends AppCompatActivity implements UserAd
     public void onItemClick(User user) {
         Log.d("ItemClicked", "Subject: " + user.toString());
     }
+    private static String extractValue(String inputString) {
+        // Find the index of '='
+        int indexOfEquals = inputString.indexOf("=");
+
+        // Check if '=' is found in the string
+        if (indexOfEquals != -1) {
+            // Extract everything after '='
+            return inputString.substring(indexOfEquals + 1, inputString.length() - 1);
+        } else {
+            // '=' not found, return an appropriate value or handle the case as needed
+            return "Invalid input";
+        }
+    }
+
 }
