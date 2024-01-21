@@ -24,10 +24,13 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> 
     private final ArrayList<String> list; // Corrected field name
     private final OnItemClickListener listener;
 
-    public UserAdapter(Context context, ArrayList<String> list, OnItemClickListener listener) {
+    private final String subject;
+
+    public UserAdapter(Context context, ArrayList<String> list, OnItemClickListener listener, String subject) {
         this.context = context;
         this.list = list; // Corrected field name
         this.listener = listener;
+        this.subject = subject;
     }
 
     @NonNull

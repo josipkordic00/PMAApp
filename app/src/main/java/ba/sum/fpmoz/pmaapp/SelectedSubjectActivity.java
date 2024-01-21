@@ -47,10 +47,9 @@ public class SelectedSubjectActivity extends AppCompatActivity implements UserAd
     UserAdapter adapter;
 
     ImageView emailIcon22, backBtn;
-
+    String subject;
     FirebaseUser user;
     FirebaseDatabase mDatabase = FirebaseDatabase.getInstance("https://pmaapp-8b913-default-rtdb.europe-west1.firebasedatabase.app/");
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,7 +59,6 @@ public class SelectedSubjectActivity extends AppCompatActivity implements UserAd
         backBtn = findViewById(R.id.imageView6);
         usersView = findViewById(R.id.usersView);
         emailIcon22 = findViewById(R.id.emailIcon22);
-        DatabaseReference usersDbRef = this.mDatabase.getReference("users");
         DatabaseReference selectedSDbRef = this.mDatabase.getReference("selected_subject");
         DatabaseReference evidentionDbRef = this.mDatabase.getReference("evidentions");
 
@@ -73,27 +71,44 @@ public class SelectedSubjectActivity extends AppCompatActivity implements UserAd
             finish();
         }
 
+
+
+        selectedSDbRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Subject item = snapshot.child(user.getUid()).getValue(Subject.class);
+                subjectName.setText(item.getName().toString());
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+
+        });
         list = new ArrayList<>();
         usersView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new UserAdapter(this, list, this);
+        adapter = new UserAdapter(this, list,this , this.subject );
         usersView.setAdapter(adapter);
         evidentionDbRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    // Check if the dataSnapshot exists and has children
+
                     if (dataSnapshot.exists() && dataSnapshot.hasChildren()) {
-                        // Loop through the children of "evidentions"
+
                         for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
-                            // Loop through all subjects for each user
+
                             for (DataSnapshot subjectSnapshot : userSnapshot.getChildren()) {
-                                // Check if the subject node has emails
-                                if (subjectSnapshot.hasChildren()) {
-                                    // Get the emails under the current subject
+
+
+                                if (subjectSnapshot.getKey().toString().equals(subjectName.getText())) {
                                     for (DataSnapshot emailSnapshot : subjectSnapshot.getChildren()) {
                                         String email = emailSnapshot.getValue(String.class);
                                         list.add(email);
-                                        // Do something with the email, like add it to a list or display it in your UI
                                     }
+                                }else{
+                                    Log.d("mssa", "sw- "+ subjectSnapshot.toString());
                                 }
                             }
                         }
@@ -102,26 +117,11 @@ public class SelectedSubjectActivity extends AppCompatActivity implements UserAd
                 adapter.notifyDataSetChanged();
             }
 
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
 
-        });
-        usersDbRef.child(user.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()) {
-                    String FirstName = snapshot.child("name").getValue(String.class);
-
-                    subjectName.setText(FirstName);
-                }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                //error
-            }
         });
 
         selectedSDbRef.addValueEventListener(new ValueEventListener() {
@@ -178,18 +178,6 @@ public class SelectedSubjectActivity extends AppCompatActivity implements UserAd
     public void onItemClick(User user) {
         Log.d("ItemClicked", "Subject: " + user.toString());
     }
-    private static String extractValue(String inputString) {
-        // Find the index of '='
-        int indexOfEquals = inputString.indexOf("=");
 
-        // Check if '=' is found in the string
-        if (indexOfEquals != -1) {
-            // Extract everything after '='
-            return inputString.substring(indexOfEquals + 1, inputString.length() - 1);
-        } else {
-            // '=' not found, return an appropriate value or handle the case as needed
-            return "Invalid input";
-        }
-    }
 
 }
