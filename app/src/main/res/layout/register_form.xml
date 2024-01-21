@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#161616"
+    android:background="#393e46"
     android:padding="50dp">
 
 
@@ -147,7 +147,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="120dp"
-        android:background="@drawable/rounded_button"
+        android:background="#333"
         android:text="REGISTER"
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="@+id/editPhone"
@@ -161,7 +161,7 @@
         android:layout_height="57dp"
         android:layout_marginTop="15dp"
         android:gravity="center"
-        android:text="Back"
+        android:text="Log In"
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="@+id/addSubjectBtn"
         app:layout_constraintStart_toStartOf="@+id/addSubjectBtn"
