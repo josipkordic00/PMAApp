@@ -4,35 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#393e46"
+    android:background="#161616"
     android:padding="20dp">
 
 
     <ImageView
         android:id="@+id/emailIcon2"
-        android:padding="3dp"
         android:layout_width="51dp"
         android:layout_height="52dp"
+        android:padding="3dp"
         android:src="@drawable/ic_action_name"
         app:layout_constraintBottom_toBottomOf="@+id/emailProff"
-        app:layout_constraintTop_toTopOf="@+id/emailProff"
-        tools:layout_editor_absoluteX="-1dp"
-        tools:ignore="MissingConstraints" />
-
-    <Button
-        android:id="@+id/logout2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
-        android:background="#333"
-        android:text="Log out"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toEndOf="@+id/emailProff"
+        app:layout_constraintTop_toTopOf="@+id/emailProff"
+        tools:ignore="MissingConstraints" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -69,7 +56,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
-        android:background="#333"
+        android:background="@drawable/rounded_button"
         android:text="ADD SUBJECT"
 
         android:textColor="#FFFFFF"
@@ -226,32 +213,31 @@
 
     <TextView
         android:id="@+id/emailProff"
-        android:layout_width="190dp"
-        android:layout_height="39dp"
-        android:layout_marginLeft="10dp"
+        android:layout_width="122dp"
+        android:layout_height="66dp"
+        android:layout_marginStart="112dp"
         android:backgroundTint="#FFFFFF"
-        android:gravity="center_vertical"
+        android:gravity="center"
         android:inputType="textEmailAddress"
         android:text="TextView"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="#FFFFFF"
         android:textColorHint="#808080"
         android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/logout2"
-        app:layout_constraintEnd_toStartOf="@+id/logout2"
-        app:layout_constraintHorizontal_bias="0.076"
-        app:layout_constraintStart_toEndOf="@+id/emailIcon2"
-        app:layout_constraintTop_toTopOf="@+id/logout2" />
+        app:layout_constraintBottom_toTopOf="@+id/imageView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.176" />
 
     <View
         android:id="@+id/divider"
         android:layout_width="409dp"
         android:layout_height="1dp"
         android:background="?android:attr/listDivider"
-        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logout2"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="88dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

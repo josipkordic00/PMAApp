@@ -16,75 +16,63 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.261" />
-
-    <ImageView
-        android:id="@+id/emailIcon2"
-        android:padding="3dp"
-        android:layout_width="51dp"
-        android:layout_height="52dp"
-        android:src="@drawable/ic_action_name"
-        app:layout_constraintBottom_toBottomOf="@+id/emailProff"
-        app:layout_constraintTop_toTopOf="@+id/emailProff"
-        tools:layout_editor_absoluteX="-1dp"
-        tools:ignore="MissingConstraints" />
-
-    <Button
-        android:id="@+id/logout2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
-        android:background="#333"
-        android:text="Log out"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.84" />
 
     <TextView
         android:id="@+id/emailProff"
-        android:layout_width="190dp"
-        android:layout_height="39dp"
-        android:layout_marginLeft="10dp"
+        android:layout_width="122dp"
+        android:layout_height="66dp"
+        android:layout_marginStart="124dp"
+        android:layout_marginBottom="24dp"
         android:backgroundTint="#FFFFFF"
-        android:gravity="center_vertical"
+        android:gravity="center"
         android:inputType="textEmailAddress"
         android:text="TextView"
         android:textColor="#FFFFFF"
         android:textColorHint="#808080"
         android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/logout2"
-        app:layout_constraintEnd_toStartOf="@+id/logout2"
-        app:layout_constraintHorizontal_bias="0.076"
-        app:layout_constraintStart_toEndOf="@+id/emailIcon2"
-        app:layout_constraintTop_toTopOf="@+id/logout2" />
-
-    <Button
-        android:id="@+id/addSubject"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="144dp"
-        android:background="#333"
-        android:padding="10dp"
-        android:text="Add Subject"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/subjectsView"
-        app:layout_constraintStart_toStartOf="@+id/subjectsView" />
+        app:layout_constraintBottom_toTopOf="@+id/divider"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.888" />
 
     <View
         android:id="@+id/divider"
         android:layout_width="409dp"
         android:layout_height="1dp"
-        android:layout_marginTop="20dp"
         android:background="?android:attr/listDivider"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logout2"
-        tools:ignore="MissingConstraints"  />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="88dp" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="51dp"
+        android:layout_height="52dp"
+        app:tint="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/emailProff"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.946"
+        app:layout_constraintStart_toEndOf="@+id/emailProff"
+        app:layout_constraintTop_toTopOf="@+id/emailProff"
+        app:srcCompat="@drawable/ic_action_name" />
+
+    <Button
+        android:id="@+id/buttonAddSubject"
+        android:layout_width="278dp"
+        android:layout_height="53dp"
+        android:layout_marginBottom="40dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="35dp"
+        android:background="@drawable/rounded_button"
+        android:drawableLeft="@drawable/ic_action_name_plus"
+        android:text="Add new Subject"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/subjectsView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
