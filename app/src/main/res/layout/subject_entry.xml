@@ -32,6 +32,7 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="#FFFFFF"
                 android:text="Usernamee"
+                android:gravity="center"
                 android:textColor="#FFFFFF"
                 android:textColorHint="#808080"
                 android:textSize="20dp"

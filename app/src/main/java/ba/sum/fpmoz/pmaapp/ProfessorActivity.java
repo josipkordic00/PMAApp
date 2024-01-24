@@ -1,10 +1,12 @@
 package ba.sum.fpmoz.pmaapp;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -27,11 +29,12 @@ import ba.sum.fpmoz.pmaapp.models.Subject;
 
 public class ProfessorActivity extends AppCompatActivity implements SubjectAdapter.OnItemClickListener {
     FirebaseAuth auth;
-    Button logout, addSubject;
+    Button addSubject, backBtn;
     TextView emailProff;
     RecyclerView subjectsView;
     ArrayList<Subject> list;
     FirebaseUser user;
+    ImageView logout;
     DatabaseReference databaseUsersReference, databaseSubjectsReference;
 
     SubjectAdapter adapter;
@@ -39,6 +42,7 @@ public class ProfessorActivity extends AppCompatActivity implements SubjectAdapt
     FirebaseDatabase mDatabase = FirebaseDatabase.getInstance("https://pmaapp-8b913-default-rtdb.europe-west1.firebasedatabase.app/");
 
 
+    @SuppressLint("MissingInflatedId")
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.professor_view);
@@ -46,8 +50,8 @@ public class ProfessorActivity extends AppCompatActivity implements SubjectAdapt
         auth = FirebaseAuth.getInstance();
         subjectsView = findViewById(R.id.subjectsView);
         logout = findViewById(R.id.logout2);
-        addSubject = findViewById(R.id.addSubject);
-        emailProff = findViewById(R.id.emailProff);
+        addSubject = findViewById(R.id.buttonAddSubject);
+        emailProff = findViewById(R.id.emailProff2);
         user = auth.getCurrentUser();
         DatabaseReference subjectsDbRef = this.mDatabase.getReference("subjects");
         DatabaseReference usersDbRef = this.mDatabase.getReference("users");
@@ -58,6 +62,7 @@ public class ProfessorActivity extends AppCompatActivity implements SubjectAdapt
             startActivity(intent);
             finish();
         }
+
         // Fetch additional user data from the database
         usersDbRef.child(user.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -82,6 +87,7 @@ public class ProfessorActivity extends AppCompatActivity implements SubjectAdapt
         subjectsDbRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                list.clear();
                 for (DataSnapshot parentSnapshot : snapshot.getChildren()) {
                     for (DataSnapshot childSnapshot : parentSnapshot.getChildren()) {
                         Subject subject = childSnapshot.getValue(Subject.class);

@@ -5,36 +5,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#161616"
-    tools:context=".Login"
-    android:padding="20dp">
+    android:paddingLeft="20dp"
+    android:paddingTop="20dp"
+    android:paddingRight="20dp"
+    android:paddingBottom="20dp"
+    tools:context=".Login">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/subjectsView"
-        android:layout_width="359dp"
-        android:layout_height="398dp"
+        android:layout_width="369dp"
+        android:layout_height="543dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.486"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.84" />
-
-    <TextView
-        android:id="@+id/emailProff"
-        android:layout_width="122dp"
-        android:layout_height="66dp"
-        android:layout_marginStart="124dp"
-        android:layout_marginBottom="24dp"
-        android:backgroundTint="#FFFFFF"
-        android:gravity="center"
-        android:inputType="textEmailAddress"
-        android:text="TextView"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#808080"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/divider"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.888" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonAddSubject" />
 
     <View
         android:id="@+id/divider"
@@ -44,35 +29,55 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="88dp" />
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="51dp"
-        android:layout_height="52dp"
-        app:tint="@color/white"
-        app:layout_constraintBottom_toBottomOf="@+id/emailProff"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.946"
-        app:layout_constraintStart_toEndOf="@+id/emailProff"
-        app:layout_constraintTop_toTopOf="@+id/emailProff"
-        app:srcCompat="@drawable/ic_action_name" />
+        tools:layout_editor_absoluteY="108dp" />
 
     <Button
         android:id="@+id/buttonAddSubject"
         android:layout_width="278dp"
         android:layout_height="53dp"
-        android:layout_marginBottom="40dp"
-        android:paddingLeft="15dp"
-        android:paddingRight="35dp"
         android:background="@drawable/rounded_button"
         android:drawableLeft="@drawable/ic_action_name_plus"
+        android:paddingLeft="15dp"
+        android:paddingRight="35dp"
         android:text="Add new Subject"
         android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/subjectsView"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.175" />
+
+    <ImageView
+        android:id="@+id/logout2"
+        android:layout_width="51dp"
+        android:layout_height="52dp"
+        android:padding="3dp"
+        android:src="@drawable/ic_action_name_logout"
+        app:layout_constraintBottom_toBottomOf="@+id/emailProff2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/emailProff2"
+        app:layout_constraintTop_toTopOf="@+id/emailProff2"
+        app:layout_constraintVertical_bias="0.55" />
+
+    <TextView
+        android:id="@+id/emailProff2"
+        android:layout_width="254dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="52dp"
+        android:backgroundTint="#FFFFFF"
+        android:gravity="center"
+        android:inputType="textEmailAddress"
+        android:text="TextView"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#808080"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/divider"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.056" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

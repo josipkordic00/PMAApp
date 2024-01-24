@@ -15,7 +15,7 @@
                 android:color="#FFffff"
                 android:width="2dp"/><!-- Set your desired stroke color (white) -->
             <!-- Set your desired stroke width -->
-            <corners android:radius="8dp" /> <!-- Set your desired corner radius -->
+            <corners android:radius="200dp" /> <!-- Set your desired corner radius -->
         </shape>
     </item>
 </layer-list>

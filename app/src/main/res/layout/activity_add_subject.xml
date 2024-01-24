@@ -9,16 +9,17 @@
 
 
     <ImageView
-        android:id="@+id/emailIcon2"
+        android:id="@+id/logout"
         android:layout_width="51dp"
         android:layout_height="52dp"
         android:padding="3dp"
-        android:src="@drawable/ic_action_name"
+        android:src="@drawable/ic_action_name_logout"
         app:layout_constraintBottom_toBottomOf="@+id/emailProff"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/emailProff"
         app:layout_constraintTop_toTopOf="@+id/emailProff"
+        app:layout_constraintVertical_bias="0.55"
         tools:ignore="MissingConstraints" />
 
     <ImageView
@@ -78,8 +79,8 @@
         android:textColor="#FFFFFF"
         android:textColorHint="#13aff5"
         app:layout_constraintTop_toBottomOf="@+id/editStudies"
-        tools:layout_editor_absoluteX="28dp"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="28dp" />
 
     <EditText
         android:id="@+id/editPractical"
@@ -213,9 +214,9 @@
 
     <TextView
         android:id="@+id/emailProff"
-        android:layout_width="122dp"
-        android:layout_height="66dp"
-        android:layout_marginStart="112dp"
+        android:layout_width="258dp"
+        android:layout_height="79dp"
+        android:layout_marginStart="60dp"
         android:backgroundTint="#FFFFFF"
         android:gravity="center"
         android:inputType="textEmailAddress"
@@ -227,7 +228,7 @@
         app:layout_constraintBottom_toTopOf="@+id/imageView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.176" />
+        app:layout_constraintVertical_bias="0.761" />
 
     <View
         android:id="@+id/divider"
@@ -238,6 +239,19 @@
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteY="88dp" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/rounded_button"
+        android:text="&lt;"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,6 +3,7 @@ package ba.sum.fpmoz.pmaapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -10,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,11 +28,12 @@ import ba.sum.fpmoz.pmaapp.models.User;
 
 public class AddSubjectActivity extends AppCompatActivity {
 
-    Button logout, addSubjectBtn;
+    Button addSubjectBtn, backBtn;
     EditText editName, editClasses,editEcts,editSemester,editPractical,editSeminars,editExercises,editDepartment,editStudies;
     TextView emailProff;
     FirebaseUser user;
     FirebaseAuth auth;
+    ImageView logout;
 
     FirebaseDatabase mDatabase = FirebaseDatabase.getInstance("https://pmaapp-8b913-default-rtdb.europe-west1.firebasedatabase.app/");
 
@@ -44,12 +47,13 @@ public class AddSubjectActivity extends AppCompatActivity {
         finish();
     }
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_subject);
 
-        logout = findViewById(R.id.logout2);
+        logout = findViewById(R.id.logout);
         addSubjectBtn = findViewById(R.id.addSubjectBtn);
         editName = findViewById(R.id.editName);
         editClasses = findViewById(R.id.editClasses);
@@ -60,6 +64,13 @@ public class AddSubjectActivity extends AppCompatActivity {
         editSemester= findViewById(R.id.editSemester);
         editStudies = findViewById(R.id.editStudies);
         emailProff = findViewById(R.id.emailProff);
+        backBtn = findViewById(R.id.button);
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
         editSeminars = findViewById(R.id.editSeminars);
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
@@ -83,6 +94,8 @@ public class AddSubjectActivity extends AppCompatActivity {
                 //error
             }
         });
+
+
 
 
         addSubjectBtn.setOnClickListener(new View.OnClickListener() {

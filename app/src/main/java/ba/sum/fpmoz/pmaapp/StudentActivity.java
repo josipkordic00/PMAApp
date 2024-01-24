@@ -1,5 +1,6 @@
 package ba.sum.fpmoz.pmaapp;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Instrumentation;
 import android.content.DialogInterface;
@@ -8,12 +9,14 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -30,29 +33,44 @@ import com.journeyapps.barcodescanner.CaptureActivity;
 import com.journeyapps.barcodescanner.ScanContract;
 import com.journeyapps.barcodescanner.ScanOptions;
 
-public class StudentActivity extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import ba.sum.fpmoz.pmaapp.adapters.StudentAdapter;
+import ba.sum.fpmoz.pmaapp.adapters.UserAdapter;
+import ba.sum.fpmoz.pmaapp.models.User;
+
+public class StudentActivity extends AppCompatActivity implements StudentAdapter.OnItemClickListener {
 
     FirebaseAuth auth;
-    Button logout, addSubject;
-    TextView emailProff;
-    RecyclerView subjectsView;
-
+    TextView emailProff, subjectName2;
+    RecyclerView studentsView;
+    ImageView logout;
     FirebaseUser user;
+
+    ArrayList<String> list;
+    StudentAdapter adapter;
+
     DatabaseReference databaseUsersReference, databaseSubjectsReference;
     String subjectName, subjectUserId;
     FirebaseDatabase mDatabase = FirebaseDatabase.getInstance("https://pmaapp-8b913-default-rtdb.europe-west1.firebasedatabase.app/");
+    String subject;
 
 
+    @SuppressLint("MissingInflatedId")
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.student_view);
 
         auth = FirebaseAuth.getInstance();
-
-        logout = findViewById(R.id.logout);
-
-        emailProff = findViewById(R.id.emailProff);
+        studentsView = findViewById(R.id.recyclerView);
+        logout = findViewById(R.id.logout2);
+        subjectName2 = findViewById(R.id.textView2);
+        emailProff = findViewById(R.id.emailProff2);
         user = auth.getCurrentUser();
+
+
         DatabaseReference usersDbRef = this.mDatabase.getReference("users");
         DatabaseReference evdDbRef = this.mDatabase.getReference("evidentions");
 
@@ -62,7 +80,10 @@ public class StudentActivity extends AppCompatActivity {
             finish();
         }
 
-
+        list = new ArrayList<>();
+        studentsView.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new StudentAdapter(this, list,this , this.subject );
+        studentsView.setAdapter(adapter);
 
         // Fetch additional user data from the database
         usersDbRef.child(user.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -84,7 +105,42 @@ public class StudentActivity extends AppCompatActivity {
         });
         scanCode();
 
-        //evdDbRef.child(this.subjectUserId).child(this.subjectName).setValue(user.getUid());
+        evdDbRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                list.clear();
+
+                if (dataSnapshot.exists() && dataSnapshot.hasChildren()) {
+
+                    for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
+                        if(userSnapshot.getKey().equals(subjectUserId)){
+                            for (DataSnapshot subjectSnapshot : userSnapshot.getChildren()) {
+                                if (subjectSnapshot.getKey().toString().equals(subjectName)) {
+                                    for (DataSnapshot emailSnapshot : subjectSnapshot.getChildren()) {
+                                        String email = emailSnapshot.getValue(String.class);
+                                        list.add(removeAfterAtSymbol(email));
+
+                                    }
+                                }else{
+                                    Log.d("mssa", "sw- "+ subjectSnapshot.toString());
+                                }
+                            }
+
+
+                        }
+
+                    }
+                }
+
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+
+        });
 
 
         logout.setOnClickListener(new View.OnClickListener() {
@@ -96,6 +152,8 @@ public class StudentActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+
     }
 
     private void scanCode() {
@@ -132,6 +190,28 @@ public class StudentActivity extends AppCompatActivity {
         String srednjaRijec = rijeci[rijeci.length - 2];
         this.subjectName = srednjaRijec.replaceAll("_", " ");
         this.subjectUserId = zadnjaRijec;
+        subjectName2.setText(subjectName);
+    }
+
+    @Override
+    public void onItemClick(User user) {
+
+    }
+    private static String removeAfterAtSymbol(String email) {
+        // Define a regex pattern to match everything after the '@' symbol
+        Pattern pattern = Pattern.compile("@.*");
+
+        // Create a Matcher object
+        Matcher matcher = pattern.matcher(email);
+
+        // Check if the pattern is found
+        if (matcher.find()) {
+            // Replace everything after '@' with an empty string
+            return email.replace(matcher.group(), "");
+        }
+
+        // Return the original email if the pattern is not found
+        return email;
     }
 }
 
