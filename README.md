@@ -27,3 +27,6 @@ Screenshots:
 5. List of evidentions: https://prnt.sc/gHssTejGtBtX
 6. Students in one evidention record who finished lecture: https://prnt.sc/qBE5jMWrLIHM
 7. Student view when qr code is scanned: https://prnt.sc/hKyOv18C_WYc
+
+Contact:
+josipkordic00@gmail.com
