@@ -4,18 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#393e46"
+    android:background="#161616"
     android:padding="50dp">
 
 
     <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@drawable/baseline_app_registration_24"
-
-        app:layout_constraintEnd_toEndOf="@+id/editFirstName"
-        app:layout_constraintStart_toStartOf="@+id/editFirstName"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:id="@+id/imageView8"
+        android:layout_width="421dp"
+        android:layout_height="307dp"
+        android:layout_marginStart="-65dp"
+        android:layout_marginTop="-110dp"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/pma_logo" />
 
     <EditText
         android:id="@+id/editFirstName"
@@ -147,7 +149,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="120dp"
-        android:background="#333"
+        android:background="@drawable/rounded_button"
         android:text="REGISTER"
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="@+id/editPhone"

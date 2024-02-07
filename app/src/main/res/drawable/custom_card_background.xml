@@ -1,0 +1,21 @@
+<!-- res/drawable/custom_card_background.xml -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Background color of the card -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#161616" /> <!-- Set your desired background color -->
+            <corners android:radius="8dp" /> <!-- Set your desired corner radius -->
+        </shape>
+    </item>
+    <!-- Stroke around the card -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@android:color/transparent" /> <!-- Transparent color for no fill -->
+            <stroke
+                android:color="#FFffff"
+                android:width="2dp"/><!-- Set your desired stroke color (white) -->
+            <!-- Set your desired stroke width -->
+            <corners android:radius="200dp" /> <!-- Set your desired corner radius -->
+        </shape>
+    </item>
+</layer-list>
