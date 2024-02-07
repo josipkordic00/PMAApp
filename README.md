@@ -21,3 +21,4 @@ Screenshots:
 4. When clicked on qr code(lecture ends): https://prnt.sc/pjW8-h22NhB5
 5. List of evidentions: https://prnt.sc/gHssTejGtBtX
 6. Students in one evidention record who finished lecture: https://prnt.sc/qBE5jMWrLIHM
+7. Student view when qr code is scanned: https://prnt.sc/hKyOv18C_WYc
