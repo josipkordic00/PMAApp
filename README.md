@@ -1,1 +1,1 @@
-Change branch to "josip"
+Main project is on branch "josip"
