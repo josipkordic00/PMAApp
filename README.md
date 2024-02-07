@@ -6,14 +6,14 @@ Application is available on google play: https://play.google.com/store/apps/deta
 
 Test userpass:
 
-Professor: 
+--- Professor ---
 
 User: professor@gmail.com
 
 Password: 123456
 
 
-Student:
+--- Student ---
 
 User: student@gmail.com
 
