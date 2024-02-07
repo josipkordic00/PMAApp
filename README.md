@@ -15,9 +15,9 @@ User: student@gmail.com
 Password: 123456
 
 Screenshots:
-1. When proffessor log in: [](https://prnt.sc/cwzaIDHXODgH)
-2. Students who scanned qr code: [](https://prnt.sc/rhvEcntSx1e3)
-3. Button with options: [](https://prnt.sc/ZVX8u3DQL8by)
-4. When clicked on qr code(lecture ends): [](https://prnt.sc/pjW8-h22NhB5)
-5. List of evidentions: [](https://prnt.sc/gHssTejGtBtX)
-6. Students in one evidention record who finished lecture: [](https://prnt.sc/qBE5jMWrLIHM)
+1. When proffessor log in: https://prnt.sc/cwzaIDHXODgH
+2. Students who scanned qr code: https://prnt.sc/rhvEcntSx1e3
+3. Button with options: https://prnt.sc/ZVX8u3DQL8by
+4. When clicked on qr code(lecture ends): https://prnt.sc/pjW8-h22NhB5
+5. List of evidentions: https://prnt.sc/gHssTejGtBtX
+6. Students in one evidention record who finished lecture: https://prnt.sc/qBE5jMWrLIHM
